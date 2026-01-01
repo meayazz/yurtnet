@@ -1,24 +1,53 @@
+const app = document.getElementById("app");
 
-document.addEventListener("DOMContentLoaded",()=>{
- const g=document.getElementById("greeting");
- if(g){
-  const h=new Date().getHours();
-  let t="İyi Akşamlar";
-  if(h<12)t="İyi Sabahlar";
-  else if(h<18)t="İyi Öğleler";
-  setTimeout(()=>g.innerText=t,2000);
- }
+const routes = {
+  "/login": "pages/auth/login.html",
+  "/home": "pages/home/home.html",
+  "/talebe": "pages/talebe/index.html",
+  "/santral": "pages/santral/index.html",
+  "/yemekhane": "pages/yemekhane/index.html",
+  "/mescid": "pages/mescid/index.html",
+  "/ayarlar": "pages/ayarlar/index.html"
+};
 
- fetch("assets/data/duyurular.json")
- .then(r=>r.json())
- .then(d=>{
-  const el=document.getElementById("slider");
-  if(!el)return;
-  let i=0;
-  el.innerText=d[i];
-  setInterval(()=>{
-   i=(i+1)%d.length;
-   el.innerText=d[i];
-  },4000);
- });
+function router(path){
+  if(!localStorage.getItem("auth") && path !== "/login"){
+    path = "/login";
+  }
+  fetch(routes[path])
+    .then(r => r.text())
+    .then(html => app.innerHTML = html);
+
+  history.pushState({}, "", path);
+}
+
+window.onpopstate = () => router(location.pathname);
+
+document.addEventListener("click", e => {
+  const link = e.target.closest("[data-link]");
+  if(link){
+    e.preventDefault();
+    router(link.getAttribute("href"));
+  }
 });
+
+function login(){
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pass").value;
+
+  if(u === "admin" && p === "123456"){
+    localStorage.setItem("auth","admin");
+    router("/home");
+  }else{
+    alert("Hatalı giriş");
+  }
+}
+
+function logout(){
+  localStorage.clear();
+  router("/login");
+}
+
+if(location.pathname === "/" || location.pathname === ""){
+  router("/login");
+}
