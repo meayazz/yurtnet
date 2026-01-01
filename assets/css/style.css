@@ -1,105 +1,25 @@
-:root{
-  --bg:#f2f4f8;
-  --card:rgba(255,255,255,0.85);
-  --border:rgba(255,255,255,0.65);
-  --text:#111827;
-  --sub:#4b5563;
-
-  --grad-blue:linear-gradient(135deg,#2563eb,#1e40af);
-  --grad-purple:linear-gradient(135deg,#7c3aed,#4c1d95);
-  --grad-green:linear-gradient(135deg,#059669,#064e3b);
-  --grad-red:linear-gradient(135deg,#dc2626,#7f1d1d);
-  --grad-gray:linear-gradient(135deg,#6b7280,#374151);
-
-  --radius:22px;
-}
-
-*{box-sizing:border-box}
 
 body{
-  margin:0;
-  background:var(--bg);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,system-ui;
-  color:var(--text);
+ background:linear-gradient(135deg,#020617,#0f172a);
+ font-family:Inter,system-ui,sans-serif;
+ color:#fff;
 }
-
-.app{
-  max-width:420px;
-  margin:0 auto;
-  padding:18px;
-}
-
 .glass{
-  background:var(--card);
-  backdrop-filter:blur(26px);
-  -webkit-backdrop-filter:blur(26px);
-  border-radius:var(--radius);
-  border:1px solid var(--border);
+ background:rgba(255,255,255,.18);
+ backdrop-filter:blur(18px);
+ border-radius:20px;
+ border:1px solid rgba(255,255,255,.35);
 }
-
-.header{
-  padding:18px;
-  margin-bottom:18px;
-}
-
-.title{
-  font-size:22px;
-  font-weight:800;
-}
-
-.subtitle{
-  font-size:17px;
-  font-weight:700;
-  margin-top:6px;
-  color:var(--sub);
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
 .tile{
-  padding:22px;
-  border-radius:20px;
-  font-weight:800;
-  text-align:center;
-  transition:transform .35s cubic-bezier(.4,0,.2,1);
+ padding:22px;
+ text-align:center;
+ font-weight:600;
+ transition:.25s;
 }
-
-.tile:hover{
-  transform:scale(1.04);
-}
-
-.btn{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:18px;
-  font-weight:800;
-  font-size:15px;
-  color:#fff;
-  background:var(--grad-blue);
-}
-
-.input{
-  width:100%;
-  padding:14px;
-  border-radius:18px;
-  border:1px solid #e5e7eb;
-  margin-bottom:12px;
-  font-size:15px;
-}
-
-.back{
-  font-size:18px;
-  font-weight:800;
-  cursor:pointer;
-  margin-bottom:10px;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
+.tile:hover{transform:translateY(-5px);}
+.gradient-mor{background:linear-gradient(135deg,#7b5cff,#c4b5fd);}
+.gradient-mavi{background:linear-gradient(135deg,#3b82f6,#93c5fd);}
+.gradient-kirmizi{background:linear-gradient(135deg,#ef4444,#fca5a5);}
+.gradient-yesil{background:linear-gradient(135deg,#22c55e,#86efac);}
+.gradient-gri{background:linear-gradient(135deg,#6b7280,#9ca3af);}
+a{color:white;text-decoration:none;}
