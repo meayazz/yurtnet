@@ -1,0 +1,25 @@
+
+body{
+ background:linear-gradient(135deg,#020617,#0f172a);
+ font-family:Inter,system-ui,sans-serif;
+ color:#fff;
+}
+.glass{
+ background:rgba(255,255,255,.18);
+ backdrop-filter:blur(18px);
+ border-radius:20px;
+ border:1px solid rgba(255,255,255,.35);
+}
+.tile{
+ padding:22px;
+ text-align:center;
+ font-weight:600;
+ transition:.25s;
+}
+.tile:hover{transform:translateY(-5px);}
+.gradient-mor{background:linear-gradient(135deg,#7b5cff,#c4b5fd);}
+.gradient-mavi{background:linear-gradient(135deg,#3b82f6,#93c5fd);}
+.gradient-kirmizi{background:linear-gradient(135deg,#ef4444,#fca5a5);}
+.gradient-yesil{background:linear-gradient(135deg,#22c55e,#86efac);}
+.gradient-gri{background:linear-gradient(135deg,#6b7280,#9ca3af);}
+a{color:white;text-decoration:none;}
