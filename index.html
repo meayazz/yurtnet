@@ -1,15 +1,47 @@
-<!doctype html>
-<html lang="tr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YURT.NET</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+const app = document.getElementById("app");
 
-  <div id="app"></div>
+const routes = {
+  login: "pages/auth/login.html",
+  home: "pages/home/dashboard.html",
+  talebe: "pages/talebe/talebe.html",
+  santral: "pages/santral/santral.html",
+  yemekhane: "pages/yemekhane/yemekhane.html",
+  mescid: "pages/mescid/mescid.html",
+  ayarlar: "pages/ayarlar/settings.html"
+};
 
-  <script src="assets/js/app.js"></script>
-</body>
-</html>
+function navigate(page){
+  location.hash = page;
+}
+
+function router(){
+  let page = location.hash.replace("#","") || "login";
+
+  if(!localStorage.getItem("auth") && page !== "login"){
+    page = "login";
+  }
+
+  fetch(routes[page])
+    .then(r => r.text())
+    .then(html => app.innerHTML = html);
+}
+
+window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
+
+function login(){
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pass").value;
+
+  if(u === "admin" && p === "123456"){
+    localStorage.setItem("auth","1");
+    navigate("home");
+  } else {
+    alert("Hatalı giriş");
+  }
+}
+
+function logout(){
+  localStorage.clear();
+  navigate("login");
+}
